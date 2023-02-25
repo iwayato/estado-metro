@@ -8,5 +8,5 @@ Aplicación que hace uso de la [API Red](https://xor.cl/api/red/) que entrega in
 
 #### Formato
 
--raiz
-    -api_status: (string) Es OK si la API está funcionando.
+- raiz
+    - api_status: (string) Es OK si la API está funcionando.
