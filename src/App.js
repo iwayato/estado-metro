@@ -1,22 +1,35 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+const url = "https://api.xor.cl/red/metro-network";
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [data, setData] = useState([]);
+
+    const getData = () => {
+        axios
+            .get(url)
+            .then(response => {
+                console.log("Se obtuvieron datos");
+                setData(response.data)
+            })
+            .catch(
+                setData([])
+            )
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
+
+    console.log(data.lines);
+
+    return (
+        <div>
+            <h1>API Status: {data.api_status}</h1>
+        </div>
+    );
 }
 
 export default App;
