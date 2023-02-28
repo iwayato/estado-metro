@@ -1,12 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Home from "./components/Home";
 
 const url = "https://api.xor.cl/red/metro-network";
 
 function App() {
 
-    const [status, setStatus] = useState("");
-    const [issues, setIssues] = useState("");
     const [lines, setLines] = useState([]);
     const [time, setTime] = useState("");
 
@@ -14,14 +13,9 @@ function App() {
         axios
             .get(url)
             .then(response => {
-                setStatus(response.data.api_status)
-                setIssues(response.data.issues)
                 setLines(response.data.lines)
-                setTime(response.data.time)
+                setTime(response.data.time.split(" ")[1])
             })
-            .catch(
-                console.log("Error")
-            )
     }
 
     useEffect(() => {
@@ -33,13 +27,15 @@ function App() {
     }, [])
 
     return (
-        <div>
-            <h1>API Status : {status}</h1>
-            <h1>Problemas en la red : {issues ? "Si" : "No"}</h1>
-            <h1>Hora : {time}</h1>
-            {lines.map((line) => 
-                <p>{line.name}</p>
-            )}
+        <div style={{
+            backgroundColor: '#373737',
+            width: '100%',
+            height: '100vh',
+        }}>
+            <Home
+                lines = {lines}
+                time = {time}>
+            </Home>
         </div>
     );
 }
