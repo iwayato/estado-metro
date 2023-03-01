@@ -60,11 +60,10 @@ const Home = ({lines, time}) => {
                         <svg
                             stroke="white"
                             fill="white" 
-                            stroke-width="0" 
+                            strokeWidth="0" 
                             version="1.1" 
                             viewBox="0 0 32 32" 
                             focusable="false" 
-                            class="chakra-icon css-9t64xk" 
                             height="3em" 
                             width="3em" 
                             xmlns="http://www.w3.org/2000/svg">
