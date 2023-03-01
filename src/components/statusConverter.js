@@ -2,6 +2,10 @@ import { Badge } from '@chakra-ui/react'
 
 export function statusConverter(statusCode) {
     switch (statusCode) {
+        case false:
+            return <Badge colorScheme='green'>Sin problemas</Badge>
+        case true:
+            return <Badge colorScheme='orange'>Con problemas</Badge>
         case 0:
             return <Badge colorScheme='green'>Operativa</Badge>
         case 1:
